@@ -9,4 +9,10 @@ class Bike < ActiveRecord::Base
         self.user.rating
     end
 
+    def self.lowest_price
+        Bike.all.sort_by do |bike|
+            bike[:price]
+        end
+    end
+
 end 
