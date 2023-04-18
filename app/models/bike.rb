@@ -9,10 +9,8 @@ class Bike < ActiveRecord::Base
         self.user.rating
     end
 
-    def self.lowest_price
-        Bike.all.sort_by do |bike|
-            bike[:price]
-        end
+    def self.by_lowest_price
+        self.all.order(price: :asc)
     end
 
 end 
