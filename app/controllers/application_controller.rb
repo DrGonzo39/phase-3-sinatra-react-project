@@ -49,4 +49,10 @@ class ApplicationController < Sinatra::Base
     bike.to_json
   end
 
+  delete '/bikes/:id' do
+    bike = Bike.find(params[:id])
+    bike.destroy
+    bike.to_json
+  end
+
 end
