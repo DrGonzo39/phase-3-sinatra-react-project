@@ -6,10 +6,42 @@ class ApplicationController < Sinatra::Base
     bikes.to_json
   end
 
-  get '/users/:id' do
+  get '/bikes/:id' do
+    bike = Bike.find(params[:id])
+    bike.to_json
+  end
+
+  get '/users' do
     users = User.all
     users.to_json
   end
-  
+
+  get '/users/:id' do
+    user = User.find(params[:id])
+    user.to_json
+  end
+
+  post '/bikes' do
+    bike = Bike.create(
+      name: params[:name],
+      brand: params[:brand],
+      terrain: params[:terrain],
+      condition: params[:condition],
+      price: params[:price],
+      user_id: params[:user_id],
+      image: params[:image]
+    )
+    bike.to_json
+  end
+
+  patch 'users/:id' do
+    user = User.find(params[:id])
+    user.update(rating: params[:rating])
+    user.to_json
+  end
+
+  patch 'bikes/:id' do
+    
+  end
 
 end
