@@ -34,13 +34,13 @@ class ApplicationController < Sinatra::Base
     bike.to_json
   end
 
-  patch 'users/:id' do
+  patch '/users/:id' do
     user = User.find(params[:id])
     user.update(rating: params[:rating])
     user.to_json
   end
 
-  patch 'bikes/:id' do
+  patch '/bikes/:id' do
     bike = Bike.find(params[:id])
     bike.update(
       condition: params[:condition],
