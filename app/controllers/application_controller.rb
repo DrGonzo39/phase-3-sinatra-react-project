@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
 
   get '/users/:id' do
     user = User.find(params[:id])
-    user.to_json
+    user.to_json(include: :bikes)
   end
 
   post '/bikes' do
