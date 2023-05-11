@@ -43,7 +43,6 @@ class ApplicationController < Sinatra::Base
   patch '/bikes/:id' do
     bike = Bike.find(params[:id])
     bike.update(
-      condition: params[:condition],
       price: params[:price]
     )
     bike.to_json
