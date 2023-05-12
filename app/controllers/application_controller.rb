@@ -21,6 +21,14 @@ class ApplicationController < Sinatra::Base
     user.to_json(include: :bikes)
   end
 
+  post '/users' do
+    user = User.create(
+      name: params[:name],
+      rating: params[:rating]
+    )
+    user.to_json(include: :bikes)
+  end
+
   post '/bikes' do
     bike = Bike.create(
       name: params[:name],
@@ -32,12 +40,6 @@ class ApplicationController < Sinatra::Base
       image: params[:image]
     )
     bike.to_json
-  end
-
-  patch '/users/:id' do
-    user = User.find(params[:id])
-    user.update(rating: params[:rating])
-    user.to_json
   end
 
   patch '/bikes/:id' do
