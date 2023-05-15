@@ -1,6 +1,7 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
+  #these bike get requests are just to meet requirements
   get '/bikes' do
     bikes = Bike.by_lowest_price
     bikes.to_json
